@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    //Q1. Write a program to find all pairs of an integer array whose sum is equal to a given number?
+        function findPairsWithSum(arr, targetSum) {
+  const result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === targetSum) {
+        result.push([arr[i], arr[j]]);
+      }
+    }
+  }
+
+  return result;
+}
+
+const integerArray = [1,2,3,4,5,6,7];
+const target = 8;
+
+const pairs = findPairsWithSum(integerArray, target);
+
+if (pairs.length > 0) {
+  console.log(`Pairs with a sum of ${target}:`);
+  pairs.forEach(pair => {
+    console.log(pair);
+  });
+} else {
+  console.log("No pairs found with the given sum.");
+}
+
+    </script>
+</body>
+</html>

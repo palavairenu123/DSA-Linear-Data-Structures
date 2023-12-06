@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+//Q10. Write a program to find the smallest number using a stack.
+    class MinStack {
+  constructor() {
+    this.stack = [];
+    this.minStack = [];
+  }
+
+  push(item) {
+    this.stack.push(item);
+
+    if (this.minStack.length === 0 || item <= this.minStack[this.minStack.length - 1]) {
+      this.minStack.push(item);
+    }
+  }
+
+  pop() {
+    if (this.stack.length === 0) {
+      return;
+    }
+
+    const poppedItem = this.stack.pop();
+
+    if (poppedItem === this.minStack[this.minStack.length - 1]) {
+      this.minStack.pop();
+    }
+  }
+
+  top() {
+    if (this.stack.length === 0) {
+      return undefined;
+    }
+    return this.stack[this.stack.length - 1];
+  }
+
+  getMin() {
+    if (this.minStack.length === 0) {
+      return undefined;
+    }
+    return this.minStack[this.minStack.length - 1];
+  }
+}
+
+// Example usage:
+const stack = new MinStack();
+stack.push(3);
+stack.push(5);
+stack.push(2);
+stack.push(1);
+
+console.log("Smallest number in the stack: " + stack.getMin()); // Output: 1
+
+   </script> 
+</body>
+</html>

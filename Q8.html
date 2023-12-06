@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//Q8. Write a program to check if all the brackets are closed in a given code snippet.
+        function areBracketsClosed(code) {
+  const stack = [];
+  const bracketPairs = {
+    "(": ")",
+    "{": "}",
+    "[": "]",
+  };
+
+  for (const char of code) {
+    if (bracketPairs[char]) {
+      // If it's an opening bracket, push it onto the stack.
+      stack.push(char);
+    } else if (Object.values(bracketPairs).includes(char)) {
+      // If it's a closing bracket, check if it matches the top of the stack.
+      if (bracketPairs[stack.pop()] !== char) {
+        return false; // Mismatched closing bracket.
+      }
+    }
+  }
+
+  return stack.length === 0; // All brackets should be closed.
+}
+
+// Example usage:
+const codeSnippet1 = "{(a + b) * [c - d]}";
+const codeSnippet2 = "{(a + b) * [c - d]";
+console.log("Code 1 brackets are closed: " + areBracketsClosed(codeSnippet1)); // Output: true
+console.log("Code 2 brackets are closed: " + areBracketsClosed(codeSnippet2)); // Output: false
+
+    </script>
+</body>
+</html>
